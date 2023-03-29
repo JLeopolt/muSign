@@ -2,6 +2,8 @@ import os
 import sys
 from tkinter import filedialog
 
+from core.utils import utils
+
 config_filetypes = [('μSign Configs', '*.ini'),
                     ('All Files', '*.*')]
 binary_filetypes = [('Executables', '*.exe'),
@@ -46,3 +48,8 @@ def open_filepath(title, filetypes):
                                       title=title,
                                       defaultextension=filetypes[0][0],
                                       filetypes=filetypes)
+
+
+# Returns true if the file dialog was cancelled or failed.
+def was_cancelled(filepath):
+    return utils.trim(filepath) == ''

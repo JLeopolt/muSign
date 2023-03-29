@@ -1,5 +1,6 @@
 import tkinter as tk
 
+from core.gui import console
 from core.utils import files
 from core.services import config
 
@@ -11,6 +12,8 @@ def configure(parent):
 
     # Prepare 'File' menu
     file_menu = tk.Menu(menubar, tearoff=0)
+    file_menu.add_command(label="Save Console Log", command=console.save_log)
+    file_menu.add_separator()
     # exits the program
     file_menu.add_command(label="Exit", command=parent.quit)
     menubar.add_cascade(label="File", menu=file_menu)
@@ -34,17 +37,17 @@ def configure(parent):
 def prompt_load():
     path = files.load_config_from_file()
     if path is None:
-        print('Error: Could not load file.')
+        console.printError('Could not import configuration from file.')
         return
     config.load(path)
-    print('Successfully loaded configuration from file.')
+    console.printSuccess('Successfully imported configuration from file.')
 
 
 # prompts the user to save to a file.
 def prompt_save():
     path = files.save_config_to_file()
     if path is None:
-        print('Error: Could not save file.')
+        console.printError('Could not export configuration to file.')
         return
     config.save(path)
-    print('Successfully saved configuration to file.')
+    console.printSuccess('Successfully exported configuration to file.')
