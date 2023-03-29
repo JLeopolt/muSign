@@ -1,7 +1,7 @@
 import subprocess
 
-from core.gui import gui
-from core.utils import files
+from core.gui import gui, console
+from core.utils import files, utils
 
 
 def build_command():
@@ -16,4 +16,7 @@ def build_command():
 
 def run():
     command_str = build_command()
-    subprocess.run(command_str, shell=True)
+    proc = subprocess.run(command_str, shell=True, capture_output=True)
+    console.printStdOutput('stdout', proc.stdout.decode())
+    if utils.trim(proc.stderr.decode()) != '':
+        console.printStdOutput('stderr', proc.stderr.decode())
