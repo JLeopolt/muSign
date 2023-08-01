@@ -34,4 +34,4 @@ Please note, this project depends on binaries with special licensing requirement
 * Thanks to [Launch4J](https://launch4j.sourceforge.net/) for the Sign4J signing tool.
 
 ## Contact Us
-If you have any inquiries, contact us <a href="https://www.pyroneon.ml/contact-us/email">here</a>.<br>
+If you have any inquiries, contact us <a href="https://www.pyroneon.net/contact-us/email">here</a>.<br>
